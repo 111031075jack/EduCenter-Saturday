@@ -40,8 +40,23 @@ public class MemberDao {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw new RuntimeException(e.getMessage());
 		}
 	}
 
+	/**
+	 * 登入
+	 * */
+	public Member login(String username, String password) {
+		
+		String sql ="""
+				select id, username, password, fullname, email, role, create_time from member where username = ?
+				""";
+		
+		return null;
+	}
+	
+	
+	
 	
 }

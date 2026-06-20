@@ -2,6 +2,7 @@ package model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import model.entity.Member;
 import model.util.DBUtil;
@@ -52,6 +53,40 @@ public class MemberDao {
 		String sql ="""
 				select id, username, password, fullname, email, role, create_time from member where username = ?
 				""";
+		
+		try (Connection conn = DBUtil.getConnection();
+			 PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			
+			pstmt.setString(1, username);
+			
+			try(ResultSet rs = pstmt.executeQuery()){
+				
+				// 1.查無該使用者
+				if(!rs.next()) {
+					return null;
+				}
+				
+				// 2.密碼比對錯誤
+				if(!password.equals(rs.getString("password"))) {
+					return null;
+				}
+				
+				// 3.登入成功將 member 物件回傳
+					Member member = new Member();
+					member.setUsername(rs.getString("username"));
+					member.setPassword(rs.getString("password"));
+					member.setFullname(rs.getString("fullname"));
+					member.setEmail(rs.getString("email"));
+					member.setRole(rs.getString("role"));
+					member.setCreateTime(rs.getDate("create_time"));
+					
+					return member;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 		
 		return null;
 	}

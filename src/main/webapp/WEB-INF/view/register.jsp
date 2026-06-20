@@ -13,6 +13,18 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>會員註冊(Register)</title>
+		<style>
+
+			body{
+			    background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTfqcrjvV0mN6gox2Kl2ePkwf_6iAzFmfET8ALiLuxeQ&s=10');
+			    background-size:cover;
+			    background-position:center;
+			    background-repeat:no-repeat;
+			    
+			    background-position:center -70px;
+			}
+
+	</style>
 	</head>
 	
 	<jsp:include page="header.jsp"></jsp:include>

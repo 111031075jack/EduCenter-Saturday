@@ -88,7 +88,7 @@ public class MemberDao {
 			return null;
 		}
 		
-		return null;
+		
 	}
 	
 	

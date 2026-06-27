@@ -72,6 +72,9 @@
     	font-weight: bold;
     }
     
+    .profile{
+    	font-weight: bold;
+    }
 </style>
 
 <div class="header">

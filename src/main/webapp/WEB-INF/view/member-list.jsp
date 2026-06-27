@@ -26,6 +26,7 @@
 					<th>Email</th>
 					<th>Role</th>
 					<th>Create time</th>
+					<th>Delete</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -42,6 +43,7 @@
 							<td><%=member.getEmail() %></td>
 							<td><%=member.getRole() %></td>
 							<td><%=member.getCreateTime() %></td>
+							<td><a href="/EduCenter/member/delete?id=<%=member.getId() %>" class="pure-button">Delete</td>
 						</tr>
 					<% } %>
 				<% } %>

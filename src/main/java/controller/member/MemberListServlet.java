@@ -18,7 +18,7 @@ import model.entity.Member;
  * 要登入才可使用且角色須為 Admin
  * 未登入要引導到登入頁面
  * */
-@WebServlet(urlPatterns = "/member-list")
+@WebServlet(urlPatterns = "/members")
 public class MemberListServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

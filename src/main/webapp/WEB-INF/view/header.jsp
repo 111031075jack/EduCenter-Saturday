@@ -8,6 +8,19 @@
 	if(member != null) {
 		welcomeMessage = "Hi " + member.getFullname() + "("+ member.getRole() +") 你好 (●'◡'●) &nbsp";
 	}
+	
+	boolean isLogin = false; // 是否登入
+	boolean isAdmin = false; // 是否是 ADMIN 
+	// 判斷是否有登入
+	if(member != null){
+		isLogin = true;
+		// 判斷是否是 ADMIN 角色
+		if(member.getRole().equals("ADMIN")){
+			isAdmin = true;
+		}
+		
+	}
+	
 %>
 
 
@@ -63,10 +76,25 @@
 
 <div class="header">
     <%= welcomeMessage %>
-	<a href="/EduCenter/login">登入</a>
-	<a href="/EduCenter/register">註冊</a>
-	<a href="/EduCenter/profile">會員中心</a>
-	<a href="/EduCenter/members">會員列表(ADMIN)</a>
-	<a href="/EduCenter/logout">登出</a>
+    
+	<% if(!isLogin){ %>
+		<a href="/EduCenter/login">登入</a>
+	<% } %>
+	
+	<% if(!isLogin){ %>
+		<a href="/EduCenter/register">註冊</a>
+	<% } %>
+	
+	<% if(isLogin){ %>
+		<a href="/EduCenter/profile">會員中心</a>
+	<% } %>
+	
+	<% if(isLogin && isAdmin){ %>
+		<a href="/EduCenter/members">會員列表(ADMIN)</a>
+	<% } %>
+	
+	<% if(isLogin){ %>
+		<a href="/EduCenter/logout">登出</a>
+	<% } %>
 </div>
 
